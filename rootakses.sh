@@ -7,7 +7,7 @@ public_ip=$(curl -s ifconfig.me)
 echo "===================================="
 printf "%-30s\n" "DOT AJA"
 echo "===================================="
-echo "AKSES SSH : ssh@$public_ip:22"
+echo "AKSES SSH : ssh root@$public_ip:22"
 echo "PASSWORD : dot"
 echo "===================================="
 echo "AKSES SSH"
