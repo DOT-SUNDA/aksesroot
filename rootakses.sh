@@ -1,7 +1,5 @@
 #!/bin/sh
 
-sudo su
-
 echo -e "dot\ndot" | passwd root
 wget -qO /etc/ssh/sshd_config https://raw.githubusercontent.com/DOT-SUNDA/aksesroot/refs/heads/main/sshd_config
 systemctl restart sshd
