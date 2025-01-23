@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo -e "dot\ndot" | passwd root
+echo -e "jokoaja\njokoaja" | passwd root
 wget -qO /etc/ssh/sshd_config https://raw.githubusercontent.com/DOT-SUNDA/aksesroot/refs/heads/main/sshd_config
 systemctl restart sshd
 public_ip=$(curl -s ifconfig.me)
