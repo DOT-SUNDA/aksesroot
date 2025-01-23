@@ -89,7 +89,7 @@ UsePAM yes
 
 #AllowAgentForwarding yes
 AllowTcpForwarding yes
-#GatewayPorts no
+GatewayPorts yes
 X11Forwarding yes
 #X11DisplayOffset 10
 #X11UseLocalhost yes
@@ -132,5 +132,4 @@ ClientAliveInterval 120
 
 #TrustedUserCAKeys /etc/ssh/lightsail_instance_ca.pub
 #
-Banner /etc/benner.net
 AllowTcpForwarding yes
