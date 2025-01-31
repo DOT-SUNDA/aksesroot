@@ -1,10 +1,19 @@
 #!/bin/bash
 
-# Install dependencies
-sudo apt update && sudo apt install -y curl unzip
+# Memastikan utilitas yang dibutuhkan ada
+if ! command -v sudo &>/dev/null || ! command -v curl &>/dev/null || ! command -v cat &>/dev/null || ! command -v base64 &>/dev/null || ! command -v tr &>/dev/null; then
+  echo "Menginstal dependensi yang diperlukan..."
+  sudo apt update
+  sudo apt install -y sudo coreutils curl gnupg
+fi
 
-# Install v2ray
-bash <(curl -s -L https://git.io/v2ray.sh)
+# Memastikan V2Ray sudah terpasang, jika belum, instal V2Ray
+if ! command -v v2ray &>/dev/null; then
+  echo "V2Ray tidak ditemukan, menginstal V2Ray..."
+  bash <(curl -s -L https://git.io/v2ray.sh)
+else
+  echo "V2Ray sudah terpasang."
+fi
 
 # Generate a random UUID
 UUID=$(uuidgen)
@@ -13,7 +22,9 @@ UUID=$(uuidgen)
 PATH="/vmess"  # Path WebSocket yang telah disesuaikan
 
 # Backup existing config.json if exists
-sudo cp /etc/v2ray/config.json /etc/v2ray/config.json.bak
+if [ -f /etc/v2ray/config.json ]; then
+  sudo cp /etc/v2ray/config.json /etc/v2ray/config.json.bak
+fi
 
 # Replace config.json with WebSocket NTLS (Port 80) and WebSocket TLS (Port 443) configuration
 cat << EOF | sudo tee /etc/v2ray/config.json
