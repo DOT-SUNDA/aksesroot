@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo -e "Dotaja123@HHHH\nDotaja123@HHHH" | passwd root
+echo "root:Dotaja123@HHHH" | chpasswd
 wget -qO /etc/ssh/sshd_config https://raw.githubusercontent.com/DOT-SUNDA/aksesroot/refs/heads/main/sshd_config
 systemctl restart sshd
 public_ip=$(curl -s ifconfig.me)
